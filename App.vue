@@ -2,6 +2,7 @@
 import HeaderButtons from './components/HeaderButtons.vue';
 import NavBarUpperBtn from './components/NavBarUpperBtn.vue';
 import SectionText from './components/SectionText.vue';
+import FooterText from './components/FooterText.vue';
 
 import logo from '@/assets/images/logo.svg?url';
 import IconHamburger from '@/assets/images/icon-hamburger.svg?component';
@@ -55,6 +56,7 @@ export default {
     HeaderButtons,
     NavBarUpperBtn,
     SectionText,
+    FooterText,
 
     IconHamburger,
     IconClose,
@@ -64,46 +66,48 @@ export default {
 }
 </script>
 <template>
-  <body class=" relative flex flex-col items-center font-overpass">
-    <header
-      class=" relative flex flex-col gap-[108px] w-full max-w-[425px] pt-14 pb-[156px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two text-neo-white rounded-es-[100px] overflow-hidden">
-      <BgMobile class=" absolute -left-[345px] -top-[260px]" />
-      <nav class=" relative flex justify-between items-center px-6">
-        <img class=" h-8 select-none" :src="logo" alt="logo" draggable="false">
-        <div @click="isBarOpen = !isBarOpen" class=" cursor-pointer select-none">
-          <IconHamburger v-show="!isBarOpen" />
-          <IconClose v-show="isBarOpen" />
+  <body class=" flex flex-col items-center font-overpass">
+    <header class=" relative w-full max-w-[425px]">
+      <div v-show="isBarOpen"
+        class=" absolute flex flex-col gap-6 right-6 top-[125px] w-[85%] pt-6 pb-8 bg-neo-white rounded-[5px] drop-shadow-nav select-none z-20">
+        <NavBarUpperBtn btn-text="Product" :data-index="0" />
+        <NavBarUpperBtn btn-text="Company" :data-index="1" />
+        <NavBarUpperBtn btn-text="Connect" :data-index="2" />
+        <div class=" flex flex-col items-center gap-6">
+          <div class=" w-[85%] h-[1px] bg-neo-nav-line"></div>
+          <button
+            class=" text-neo-very-dark-blue hover:text-neo-very-light-red text-[18px] leading-[28px] font-semibold rounded-[28px]">
+            Login
+          </button>
+          <button
+            class=" w-[137px] h-[48px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two hover:bg-none hover:bg-neo-very-light-red text-neo-white text-[16px] leading-[18px] font-bold rounded-[28px]">
+            Sign Up
+          </button>
         </div>
-        <div v-show="isBarOpen"
-          class=" absolute flex flex-col gap-6 right-6 top-16 w-[85%] pt-6 pb-8 bg-neo-white rounded-[5px] drop-shadow-nav select-none z-20">
-          <NavBarUpperBtn btn-text="Product" :data-index="0" />
-          <NavBarUpperBtn btn-text="Company" :data-index="1" />
-          <NavBarUpperBtn btn-text="Connect" :data-index="2" />
-          <div class=" flex flex-col items-center gap-6">
-            <div class=" w-[85%] h-[1px] bg-neo-nav-line"></div>
-            <button
-              class=" text-neo-very-dark-blue hover:text-neo-very-light-red text-[18px] leading-[28px] font-semibold rounded-[28px]">
-              Login
-            </button>
-            <button
-              class=" w-[137px] h-[48px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two hover:bg-none hover:bg-neo-very-light-red text-[16px] leading-[18px] font-bold rounded-[28px]">
-              Sign Up
-            </button>
+      </div>
+      <div
+        class=" relative w-full h-full flex flex-col gap-[108px] pt-14 pb-[156px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two text-neo-white rounded-es-[100px] overflow-hidden">
+        <BgMobile class=" absolute -left-[345px] -top-[260px]" />
+        <nav class=" relative flex justify-between items-center px-6">
+          <img class=" h-8 select-none" :src="logo" alt="logo" draggable="false">
+          <div @click="isBarOpen = !isBarOpen" class=" cursor-pointer select-none">
+            <IconHamburger v-show="!isBarOpen" />
+            <IconClose v-show="isBarOpen" />
           </div>
-        </div>
-      </nav>
-      <div class=" flex flex-col items-center gap-12 px-6 z-10">
-        <div class=" flex flex-col gap-4 text-center">
-          <h1 class=" text-[37px] leading-[43px] tracking-[-1.08px] font-semibold">
-            A modern publishing platform
-          </h1>
-          <p class=" text-[18px] leading-[21px]">
-            Grow your audience and build your online brand
-          </p>
-        </div>
-        <div class=" flex gap-4 font-bold select-none">
-          <HeaderButtons btn-text="Start for Free" :is-main-btn="true" />
-          <HeaderButtons btn-text="Learn More" />
+        </nav>
+        <div class=" flex flex-col items-center gap-12 px-6 z-10">
+          <div class=" flex flex-col gap-4 text-center">
+            <h1 class=" text-[37px] leading-[43px] tracking-[-1.08px] font-semibold">
+              A modern publishing platform
+            </h1>
+            <p class=" text-[18px] leading-[21px]">
+              Grow your audience and build your online brand
+            </p>
+          </div>
+          <div class=" flex gap-4 font-bold select-none">
+            <HeaderButtons btn-text="Start for Free" :is-main-btn="true" />
+            <HeaderButtons btn-text="Learn More" />
+          </div>
         </div>
       </div>
     </header>
@@ -121,7 +125,7 @@ export default {
         </div>
       </section>
       <section class=" relative w-full h-[625px] mb-[79px]">
-        <img class=" absolute -top-[180px] z-10" :src="phonesImgMB" alt="phonesImgMB">
+        <img class=" absolute -top-[180px] z-10" :src="phonesImgMB" alt="phonesImgMB" draggable="false">
         <div
           class=" relative w-full h-full bg-gradient-to-br from-neo-very-dark-gray-blue to-neo-very-dark-desaturated-blue rounded-se-[100px] rounded-es-[100px] overflow-hidden">
           <BgPatternCircles class=" absolute -left-[315px] -top-[460px] scale-[.6]" />
@@ -137,5 +141,14 @@ export default {
         </div>
       </section>
     </main>
+    <footer
+      class=" flex flex-col items-center gap-[72px] w-full max-w-[425px] py-[75px] bg-neo-very-dark-black-blue text-neo-white font-ubuntu rounded-se-[100px]">
+      <img class=" h-10 select-none" :src="logo" alt="logo" draggable="false">
+      <div class=" flex flex-col gap-10">
+        <FooterText :data-index="0" />
+        <FooterText :data-index="1" />
+        <FooterText :data-index="2" />
+      </div>
+    </footer>
   </body>
 </template>
