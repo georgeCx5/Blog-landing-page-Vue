@@ -92,15 +92,15 @@ export default {
         <BgMobile class=" absolute -left-[345px] -top-[260px]" />
         <nav
           class=" relative flex justify-between items-center px-6 TB:text-[16px] TB:leading-[18px] TB:font-ubuntu TB:font-bold">
-          <div class=" flex TB:gap-8">
+          <div class=" flex TB:gap-6">
             <img class=" h-8 select-none" :src="logo" alt="logo" draggable="false">
-            <div class=" hidden TB:flex TB:gap-4">
+            <div class=" hidden TB:flex TB:gap-4 select-none">
               <NavBarUpperBtnDT :data-index="0" />
               <NavBarUpperBtnDT :data-index="1" />
               <NavBarUpperBtnDT :data-index="2" />
             </div>
           </div>
-          <div class=" hidden TB:flex TB:gap-6 TB:items-center">
+          <div class=" hidden TB:flex TB:gap-6 TB:items-center select-none">
             <button class=" text-neo-white text-opacity-75 hover:text-opacity-100">Login</button>
             <button
               class=" w-[128px] h-[48px] bg-neo-white hover:bg-neo-very-light-red text-neo-light-red hover:text-neo-white rounded-[28px]">
