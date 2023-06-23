@@ -3,6 +3,7 @@ import HeaderButtons from './components/HeaderButtons.vue';
 import NavBarUpperBtn from './components/NavBarUpperBtn.vue';
 import SectionText from './components/SectionText.vue';
 import FooterText from './components/FooterText.vue';
+import NavBarUpperBtnDT from './components/NavBarUpperBtnDT.vue';
 
 import logo from '@/assets/images/logo.svg?url';
 import IconHamburger from '@/assets/images/icon-hamburger.svg?component';
@@ -57,6 +58,7 @@ export default {
     NavBarUpperBtn,
     SectionText,
     FooterText,
+    NavBarUpperBtnDT,
 
     IconHamburger,
     IconClose,
@@ -67,9 +69,9 @@ export default {
 </script>
 <template>
   <body class=" flex flex-col items-center font-overpass">
-    <header class=" relative w-full max-w-[425px]">
+    <header class=" relative w-full max-w-[425px] TB:max-w-[768px]">
       <div v-show="isBarOpen"
-        class=" absolute flex flex-col gap-6 right-6 top-[125px] w-[85%] pt-6 pb-8 bg-neo-white rounded-[5px] drop-shadow-nav select-none z-20">
+        class=" TB:hidden absolute flex flex-col gap-6 right-6 top-[125px] w-[85%] pt-6 pb-8 bg-neo-white rounded-[5px] drop-shadow-nav select-none z-20">
         <NavBarUpperBtn btn-text="Product" :data-index="0" />
         <NavBarUpperBtn btn-text="Company" :data-index="1" />
         <NavBarUpperBtn btn-text="Connect" :data-index="2" />
@@ -86,11 +88,26 @@ export default {
         </div>
       </div>
       <div
-        class=" relative w-full h-full flex flex-col gap-[108px] pt-14 pb-[156px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two text-neo-white rounded-es-[100px] overflow-hidden">
+        class=" relative w-full h-full flex flex-col gap-[108px] pt-14 TB:pt-10 pb-[156px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two text-neo-white rounded-es-[100px] overflow-hidden">
         <BgMobile class=" absolute -left-[345px] -top-[260px]" />
-        <nav class=" relative flex justify-between items-center px-6">
-          <img class=" h-8 select-none" :src="logo" alt="logo" draggable="false">
-          <div @click="isBarOpen = !isBarOpen" class=" cursor-pointer select-none">
+        <nav
+          class=" relative flex justify-between items-center px-6 TB:text-[16px] TB:leading-[18px] TB:font-ubuntu TB:font-bold">
+          <div class=" flex TB:gap-8">
+            <img class=" h-8 select-none" :src="logo" alt="logo" draggable="false">
+            <div class=" hidden TB:flex TB:gap-4">
+              <NavBarUpperBtnDT :data-index="0" />
+              <NavBarUpperBtnDT :data-index="1" />
+              <NavBarUpperBtnDT :data-index="2" />
+            </div>
+          </div>
+          <div class=" hidden TB:flex TB:gap-6 TB:items-center">
+            <button class=" text-neo-white text-opacity-75 hover:text-opacity-100">Login</button>
+            <button
+              class=" w-[128px] h-[48px] bg-neo-white hover:bg-neo-very-light-red text-neo-light-red hover:text-neo-white rounded-[28px]">
+              Sign Up
+            </button>
+          </div>
+          <div @click="isBarOpen = !isBarOpen" class=" TB:hidden cursor-pointer select-none">
             <IconHamburger v-show="!isBarOpen" />
             <IconClose v-show="isBarOpen" />
           </div>
@@ -111,40 +128,41 @@ export default {
         </div>
       </div>
     </header>
-    <main class=" max-w-[425px] py-[100px]">
-      <section class=" flex flex-col gap-[38px] mb-[273px] px-6 text-neo-very-dark-blue">
-        <h2 class=" text-center text-[28px] leading-[33px] tracking-[-.84px] font-semibold">
+    <main class=" max-w-[425px] TB:max-w-[768px] py-[100px] TB:py-[80px]">
+      <section class=" flex flex-col gap-[38px] TB:gap-[64px] mb-[273px] TB:mb-[160px] px-6 text-neo-very-dark-blue">
+        <h2 class=" text-center text-[28px] TB:text-[32px] leading-[33px] tracking-[-.84px] font-semibold">
           Designed for the future
         </h2>
-        <div class=" flex flex-col gap-[46px]">
-          <img :src="editorImgMB" alt="editorImgMB" draggable="false">
-          <div class=" flex flex-col gap-10 pl-[9px]">
+        <div class=" flex flex-col TB:flex-row TB:items-center gap-[46px] TB:gap-0">
+          <img class=" TB:relative TB:-left-12 TB:h-[320px]" :src="editorImgMB" alt="editorImgMB" draggable="false">
+          <div class=" flex flex-col gap-10 TB:-ml-16 pl-[9px]">
             <SectionText :header="data.one[0].header" :main="data.one[0].main" />
             <SectionText :header="data.one[1].header" :main="data.one[1].main" />
           </div>
         </div>
       </section>
-      <section class=" relative w-full h-[625px] mb-[79px]">
-        <img class=" absolute -top-[180px] z-10" :src="phonesImgMB" alt="phonesImgMB" draggable="false">
+      <section class=" relative w-full h-[625px] TB:h-[400px] mb-[79px]">
+        <img class=" absolute -top-[180px] TB:-top-[120px] TB:-left-4 TB:h-[95%] z-10" :src="phonesImgMB"
+          alt="phonesImgMB" draggable="false">
         <div
           class=" relative w-full h-full bg-gradient-to-br from-neo-very-dark-gray-blue to-neo-very-dark-desaturated-blue rounded-se-[100px] rounded-es-[100px] overflow-hidden">
-          <BgPatternCircles class=" absolute -left-[315px] -top-[460px] scale-[.6]" />
-          <SectionText class=" relative mt-[221px] px-6 z-10" :header="data.two[0].header" :main="data.two[0].main"
-            :is-special="true" />
+          <BgPatternCircles class=" absolute -left-[315px] TB:-left-[300px] -top-[460px] scale-[.6]" />
+          <SectionText class=" relative mt-[221px] TB:mt-[64px] px-6 TB:pl-[340px] z-10" :header="data.two[0].header"
+            :main="data.two[0].main" :is-special="true" />
         </div>
       </section>
-      <section class=" flex flex-col gap-[46px] px-6">
-        <img :src="laptopImgMB" alt="laptopImgMB" draggable="false">
-        <div class=" flex flex-col gap-10 pl-[9px]">
+      <section class=" flex flex-col TB:flex-row TB:items-center gap-[46px] TB:gap-0 px-6">
+        <img class=" TB:relative TB:-left-20 TB:h-[315px]" :src="laptopImgMB" alt="laptopImgMB" draggable="false">
+        <div class=" flex flex-col gap-10 TB:-ml-24 pl-[9px]">
           <SectionText :header="data.three[0].header" :main="data.three[0].main" />
           <SectionText :header="data.three[1].header" :main="data.three[1].main" />
         </div>
       </section>
     </main>
     <footer
-      class=" flex flex-col items-center gap-[72px] w-full max-w-[425px] py-[75px] bg-neo-very-dark-black-blue text-neo-white font-ubuntu rounded-se-[100px]">
+      class=" flex flex-col items-center gap-[72px] TB:gap-[56px] w-full max-w-[425px] TB:max-w-[768px] py-[75px] bg-neo-very-dark-black-blue text-neo-white font-ubuntu rounded-se-[100px]">
       <img class=" h-10 select-none" :src="logo" alt="logo" draggable="false">
-      <div class=" flex flex-col gap-10">
+      <div class=" flex flex-col TB:flex-row gap-10 TB:gap-24">
         <FooterText :data-index="0" />
         <FooterText :data-index="1" />
         <FooterText :data-index="2" />

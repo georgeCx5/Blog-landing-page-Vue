@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <template>
-   <div class=" flex flex-col gap-4 text-center">
+   <div class=" flex flex-col gap-4 text-center TB:text-left">
       <h3 :class="` ${headerState} font-semibold`">
          {{ header }}
       </h3>
