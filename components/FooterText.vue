@@ -42,12 +42,12 @@ export default {
 }
 </script>
 <template>
-   <div class=" flex flex-col items-center gap-[21px] text-[18px] leading-[33px]">
+   <div class=" flex flex-col items-center DTL:items-start gap-[21px] text-[18px] leading-[33px]">
       <h5 class=" font-medium">
          {{ data[dataIndex].header }}
       </h5>
       <div class=" flex flex-col">
-         <button class=" text-neo-white text-opacity-75 hover:text-opacity-100 select-none"
+         <button class=" DTL:text-left text-neo-white text-opacity-75 hover:text-opacity-100 select-none"
             v-for="link in data[dataIndex].links">
             {{ link }}
          </button>

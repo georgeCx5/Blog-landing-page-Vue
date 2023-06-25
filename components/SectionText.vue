@@ -32,8 +32,8 @@ export default {
 }
 </script>
 <template>
-   <div class=" flex flex-col gap-4 text-center TB:text-left">
-      <h3 :class="` ${headerState} font-semibold`">
+   <div class=" flex flex-col gap-4 DTL:gap-6 text-center TB:text-left">
+      <h3 :class="` ${headerState} DTL:leading-[28px] font-semibold`">
          {{ header }}
       </h3>
       <p :class="` ${mainState} text-[16px] leading-[28px] tracking-[.5px]`">
