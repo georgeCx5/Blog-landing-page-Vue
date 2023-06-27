@@ -52,7 +52,8 @@ export default {
             main: 'Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a breeze, but capable of producing even the most complicated sites.'
           }
         ]
-      }
+      },
+      bgDesktop: 'bg-[url(@/assets/images/bg-pattern-intro-desktop.png)]',
     }
   },
   components: {
@@ -65,12 +66,13 @@ export default {
     IconHamburger,
     IconClose,
     BgMobile,
+    // BgDesktop,
     BgPatternCircles,
   }
 }
 </script>
 <template>
-  <body class=" flex flex-col items-center font-overpass">
+  <body class=" relative flex flex-col items-center font-overpass">
     <header class=" relative w-full max-w-[425px] TB:max-w-[768px] DTL:max-w-[1920px]">
       <div v-show="isBarOpen"
         class=" TB:hidden absolute flex flex-col gap-6 right-6 top-[125px] w-[85%] pt-6 pb-8 bg-neo-white rounded-[5px] drop-shadow-navMB select-none z-20">
@@ -90,8 +92,10 @@ export default {
         </div>
       </div>
       <div
-        class=" relative w-full h-full flex flex-col gap-[108px] pt-14 TB:pt-10 pb-[156px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two text-neo-white rounded-es-[100px] overflow-hidden">
-        <BgMobile class=" absolute -left-[345px] -top-[260px]" />
+        class=" relative w-full h-full flex flex-col gap-[108px] pt-14 TB:pt-10 pb-[156px] bg-gradient-to-br from-neo-very-light-red-two to-neo-light-red-two  text-neo-white rounded-es-[100px] overflow-hidden">
+        <BgMobile class=" absolute -left-[345px] -top-[260px] DTL:hidden" />
+        <div :class="` absolute -top-[1350px] -left-[450px] hidden DTL:block w-[3175px] h-[3175px] ${bgDesktop}`">
+        </div>
         <nav
           class=" relative flex justify-between items-center px-6 DTL:px-[165px] TB:text-[16px] TB:leading-[18px] TB:font-ubuntu TB:font-bold">
           <div class=" flex TB:gap-6 DTL:gap-16">
@@ -130,7 +134,8 @@ export default {
         </div>
       </div>
     </header>
-    <main class=" max-w-[425px] TB:max-w-[768px] DTL:max-w-[1920px] py-[100px] TB:py-[80px] DTL:pt-[150px]">
+    <main
+      class=" max-w-[425px] TB:max-w-[768px] DTL:max-w-[1920px] py-[100px] TB:py-[80px] DTL:pt-[150px] DTL:overflow-hidden">
       <section
         class=" flex flex-col gap-[38px] TB:gap-[64px] DTL:gap-[93px] mb-[273px] TB:mb-[160px] px-6 text-neo-very-dark-blue">
         <h2
