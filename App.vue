@@ -11,8 +11,9 @@ import IconClose from '@/assets/images/icon-close.svg?component';
 import BgMobile from '@/assets/images/bg-pattern-intro-mobile.svg?component';
 import editorImgMB from '@/assets/images/illustration-editor-mobile.svg?url';
 import editorImgDTL from '@/assets/images/illustration-editor-desktop.svg?url';
-import phonesImgMB from '@/assets/images/illustration-phones.svg?url';
+import phonesImg from '@/assets/images/illustration-phones.svg?url';
 import laptopImgMB from '@/assets/images/illustration-laptop-mobile.svg?url';
+import laptopImgDTL from '@/assets/images/illustration-laptop-desktop.svg?url';
 import BgPatternCircles from '@/assets/images/bg-pattern-circles.svg?component';
 
 export default {
@@ -22,8 +23,9 @@ export default {
       isBarOpen: false,
       editorImgMB,
       editorImgDTL,
-      phonesImgMB,
+      phonesImg,
       laptopImgMB,
+      laptopImgDTL,
       data: {
         one: [
           {
@@ -119,7 +121,7 @@ export default {
           </div>
         </nav>
         <div class=" flex flex-col items-center gap-12 px-6 z-10">
-          <div class=" flex flex-col gap-4 text-center">
+          <div class=" flex flex-col gap-4 DTL:gap-6 text-center">
             <h1 class=" text-[37px] DTL:text-[64px] leading-[43px] DTL:leading-[76px] tracking-[-1.08px] font-semibold">
               A modern publishing platform
             </h1>
@@ -137,7 +139,7 @@ export default {
     <main
       class=" max-w-[425px] TB:max-w-[768px] DTL:max-w-[1920px] py-[100px] TB:py-[80px] DTL:pt-[150px] DTL:overflow-hidden">
       <section
-        class=" flex flex-col gap-[38px] TB:gap-[64px] DTL:gap-[93px] mb-[273px] TB:mb-[160px] px-6 text-neo-very-dark-blue">
+        class=" flex flex-col gap-[38px] TB:gap-[64px] DTL:gap-[93px] mb-[273px] TB:mb-[160px] DTL:mb-[-120px] px-6 DTL:px-0 text-neo-very-dark-blue">
         <h2
           class=" text-center text-[28px] TB:text-[32px] DTL:text-[40px] leading-[33px] DTL:leading-[47px] tracking-[-.84px] font-semibold">
           Designed for the future
@@ -145,34 +147,40 @@ export default {
         <div class=" flex flex-col TB:flex-row DTL:flex-row-reverse TB:items-center DTL:items-start gap-[46px] TB:gap-0">
           <img class=" TB:relative TB:-left-12 DTL:hidden TB:h-[320px]" :src="editorImgMB" alt="editorImgMB"
             draggable="false">
-          <img class=" relative -right-[300px] -top-[230px] hidden DTL:block TB:h-[882px]" :src="editorImgDTL"
+          <img class=" relative -right-[276px] -top-[230px] hidden DTL:block TB:h-[882px]" :src="editorImgDTL"
             alt="editorImgDTL" draggable="false">
-          <div class=" flex flex-col gap-10 DTL:gap-20 TB:-ml-16 DTL:ml-[165px] DTL:-mr-[238px] pl-[9px] DTL:pl-0">
+          <div class=" flex flex-col gap-10 DTL:gap-20 TB:-ml-16 DTL:ml-[165px] DTL:-mr-[195px] pl-[9px] DTL:pl-0">
             <SectionText :header="data.one[0].header" :main="data.one[0].main" />
             <SectionText :header="data.one[1].header" :main="data.one[1].main" />
           </div>
         </div>
       </section>
-      <section class=" relative w-full h-[625px] TB:h-[400px] mb-[79px]">
-        <img class=" absolute -top-[180px] TB:-top-[120px] TB:-left-4 TB:h-[95%] z-10" :src="phonesImgMB"
-          alt="phonesImgMB" draggable="false">
+      <section class=" relative w-full h-[625px] TB:h-[400px] mb-[79px] DTL:mb-[120px]">
+        <img
+          class=" absolute -top-[180px] TB:-top-[120px] DTL:-top-[60px] TB:-left-4 DTL:left-[135px] TB:h-[95%] DTL:h-[140%] z-10"
+          :src="phonesImg" alt="phonesImg" draggable="false">
         <div
           class=" relative w-full h-full bg-gradient-to-br from-neo-very-dark-gray-blue to-neo-very-dark-desaturated-blue rounded-se-[100px] rounded-es-[100px] overflow-hidden">
-          <BgPatternCircles class=" absolute -left-[315px] TB:-left-[300px] -top-[460px] scale-[.6]" />
-          <SectionText class=" relative mt-[221px] TB:mt-[64px] px-6 TB:pl-[340px] z-10" :header="data.two[0].header"
-            :main="data.two[0].main" :is-special="true" />
+          <BgPatternCircles
+            class=" absolute -left-[315px] TB:-left-[300px] DTL:-left-[215px] -top-[460px] DTL:-top-[520px] scale-[.6] DTL:scale-[1]" />
+          <SectionText
+            class=" relative mt-[221px] TB:mt-[64px] DTL:mt-[112px] px-6 TB:pl-[340px] DTL:pl-[720px] DTL:pr-[165px] z-10"
+            :header="data.two[0].header" :main="data.two[0].main" :is-special="true" />
         </div>
       </section>
-      <section class=" flex flex-col TB:flex-row TB:items-center gap-[46px] TB:gap-0 px-6">
-        <img class=" TB:relative TB:-left-20 TB:h-[315px]" :src="laptopImgMB" alt="laptopImgMB" draggable="false">
-        <div class=" flex flex-col gap-10 TB:-ml-24 pl-[9px]">
+      <section class=" flex flex-col TB:flex-row TB:items-center gap-[46px] TB:gap-0 px-6 DTL:px-0">
+        <img class=" TB:relative TB:-left-20 DTL:hidden TB:h-[315px]" :src="laptopImgMB" alt="laptopImgMB"
+          draggable="false">
+        <img class=" TB:relative -left-[276px] hidden DTL:block " :src="laptopImgDTL" alt="laptopImgDTL"
+          draggable="false">
+        <div class=" flex flex-col gap-10 TB:-ml-24 DTL:-ml-[250px] pl-[9px] DTL:pl-0 DTL:pr-[165px]">
           <SectionText :header="data.three[0].header" :main="data.three[0].main" />
           <SectionText :header="data.three[1].header" :main="data.three[1].main" />
         </div>
       </section>
     </main>
     <footer
-      class=" flex flex-col DTL:flex-row items-center DTL:items-start gap-[72px] TB:gap-[56px] DTL:gap-[184px] w-full max-w-[425px] TB:max-w-[768px] DTL:max-w-[1920px] DTL:px-[165px] py-[75px] bg-neo-very-dark-black-blue text-neo-white font-ubuntu rounded-se-[100px]">
+      class=" flex flex-col DTL:flex-row DTL:justify-between items-center DTL:items-start gap-[72px] TB:gap-[56px] DTL:gap-[184px] w-full max-w-[425px] TB:max-w-[768px] DTL:max-w-[1920px] DTL:px-[165px] DTL:pr-[320px] py-[75px] bg-neo-very-dark-black-blue text-neo-white font-ubuntu rounded-se-[100px]">
       <img class=" h-10 select-none" :src="logo" alt="logo" draggable="false">
       <div class=" flex flex-col TB:flex-row gap-10 TB:gap-24 DTL:gap-48">
         <FooterText :data-index="0" />
